@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Collapse, Nav, Navbar, NavbarBrand, NavItem, NavLink, NavbarToggler } from 'reactstrap';
 
 const styles = {
     navbar: {
@@ -13,22 +14,35 @@ const styles = {
     }
 }
 
-function Navigation() {
+const Navigation = (props) => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggle = () => setIsOpen(!isOpen);
+
     return (
-        <div>
-        <nav className="navbar navbar-default navbar-fixed-top ">
-            <div className="container">
-                <div id="myNavbar">
-                    <ul className="nav navbar-nav flex-row navbar-right justify-content-end">
-                        <li style={styles.list}><a href="#about" style={styles.links}>ABOUT ME</a></li>
-                        <li style={styles.list}><a href="#portfolio" style={styles.links}>PROJECTS</a></li>
-                        <li style={styles.list}><a href="#contact" style={styles.links}>CONTACT</a></li>
-                        <li style={styles.list}><a href="#" style={styles.links}>RESUME</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </div>
+        <Navbar style={styles.navbar} light expand="md" className="sticky-top">
+            <NavbarBrand className="ms-3 ps-4 pt-3">Patrick Sullivan</NavbarBrand>
+            <NavbarToggler onClick={toggle} />
+            <Collapse isOpen={isOpen} navbar>
+                <Nav style={styles.list} className="ms-auto" navbar>
+                    <NavItem>
+                        <NavLink href="#about">
+                            ABOUT ME
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="#portfolio">
+                            PROJECTS
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink href="#contact">
+                            CONTACT
+                        </NavLink>
+                    </NavItem>
+                </Nav>  
+            </Collapse>
+        </Navbar>
     )
 };
 

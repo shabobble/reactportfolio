@@ -11,10 +11,18 @@ import react from '../assets/skills/react.png';
 import sql from '../assets/skills/sql.png';
 import webpack from '../assets/skills/webpack.png';
 
+const styles = {
+    h4: {
+        fontSize: '19px',
+        fontFamily: 'Helvetica, Arial, sans-serif',
+        margin: '10px 0px 30px',
+        padding: '20px'
+    }
+}
 function Skills() {
     return(
         <section className="skills">
-        <h4>Technical Skills</h4>
+        <h4 style={styles.h4}>Technical Skills</h4>
         <div className="skill-list">
           <ul className="list">
             <li>
